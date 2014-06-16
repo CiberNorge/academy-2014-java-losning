@@ -1,0 +1,18 @@
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'cibrary-web'
+}
+
+dependencies {
+    compile project(':domain')
+	compile project(':service')
+	
+	compile("org.springframework.boot:spring-boot-starter-web:$springVersion") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty:$springVersion")
+	compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
+
+    compile("org.springframework.boot:spring-boot-starter-actuator:$springVersion")
+}

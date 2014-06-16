@@ -1,0 +1,46 @@
+ext {
+    springVersion = "1.0.2.RELEASE"
+    jacksonVersion = "2.4.0"
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE")
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+
+    sourceCompatibility = '1.7'
+    targetCompatibility = '1.7'
+    group = 'no.ciber'
+    version = '1.0.0-SNAPSHOT'
+
+	repositories {
+		maven { url "http://repo.spring.io/libs-snapshot" }
+		mavenCentral()
+	}
+}
+
+subprojects {
+    dependencies {
+        testCompile 'junit:junit:4.11'
+    }
+
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}

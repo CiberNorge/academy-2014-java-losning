@@ -1,0 +1,7 @@
+jar {
+    baseName = 'cibrary-domain'
+}
+
+dependencies {
+	
+}
