@@ -13,13 +13,9 @@ buildscript {
     }
 }
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
-
 allprojects {
     apply plugin: 'idea'
+    apply plugin: 'eclipse'
     apply plugin: 'java'
 
     sourceCompatibility = '1.7'
@@ -27,10 +23,10 @@ allprojects {
     group = 'no.ciber'
     version = '1.0.0-SNAPSHOT'
 
-	repositories {
-		maven { url "http://repo.spring.io/libs-snapshot" }
-		mavenCentral()
-	}
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
 }
 
 subprojects {
