@@ -22,5 +22,7 @@ Generér IntelliJ sine prosjektfiler ved å kjøre `gradlew cleanIdea idea`.
 
 Start IntelliJ og last prosjektet ved å gå på `File -> Open...`. Velg root-katalogen til prosjektet.
 
-Du kan starte applikasjonen direkte fra IntelliJ ved å "kjøre" Application-klassen. Finn Application.java,
-høyreklikk og velg `Run/Debug Application.main().
+Du kan starte applikasjonen direkte fra IntelliJ ved å "kjøre" Application-klassen. Finn Application.java
+(`web\src\main\java\no\ciber\academy\server\Application.java`), høyreklikk og velg `Run/Debug Application.main().
+
+Åpne en browser og gå til adressen [http://localhost:8080/](http://localhost:8080/) for å se at applikasjonen kjører.
