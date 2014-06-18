@@ -27,6 +27,8 @@ allprojects {
         mavenLocal()
         mavenCentral()
     }
+
+    task stage(dependsOn: ['build'])
 }
 
 subprojects {
@@ -41,4 +43,3 @@ task wrapper(type: Wrapper) {
     gradleVersion = '1.12'
 }
 
-task stage(dependsOn: ['clean', 'build'])
