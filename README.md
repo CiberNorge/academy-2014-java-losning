@@ -26,3 +26,20 @@ Du kan starte applikasjonen direkte fra IntelliJ ved å "kjøre" Application-kla
 (`web\src\main\java\no\ciber\academy\server\Application.java`), høyreklikk og velg `Run/Debug Application.main().
 
 Åpne en browser og gå til adressen [http://localhost:8080/](http://localhost:8080/) for å se at applikasjonen kjører.
+
+Heroku
+------
+
+For å deploye til heroku er det enkleste å installere heroku cli (toolbelt). Dette gjøres fra: 
+[https://toolbelt.heroku.com](https://toolbelt.heroku.com)
+
+Deretter må man sette opp heroku som en git remote. Dette gjøres ved å kjøre kommandoen:
+
+``` bash
+heroku git:remote -a cibrary-java-test
+``` 
+Når dette er gjort kan man deploye en ny versjon med kommandoen:
+
+``` bash
+git push heroku master
+```
