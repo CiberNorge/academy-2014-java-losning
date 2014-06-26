@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+</head>
+<body>
+<span layout:fragment="sub-header">
+    What do you want to do?
+</span>
+
+<div layout:fragment="content"
+     class="container">
+    <div>
+        <span class="glyphicon glyphicon-plus"></span> <a href="form.html" th:href="@{/books/(init)}">Add a new
+        book</a>
+    </div>
+</div>
+</body>
+</html>

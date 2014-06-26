@@ -1,7 +1,8 @@
+
 jar {
     baseName = 'cibrary-domain'
 }
 
 dependencies {
-	
+    compile("org.hibernate:hibernate-validator:${hibernateValidatorVersion}")
 }

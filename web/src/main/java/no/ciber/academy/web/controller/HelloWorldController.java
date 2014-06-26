@@ -15,7 +15,7 @@ public class HelloWorldController {
     @Autowired
     private HelloWorldService helloWorldService;
 
-    @RequestMapping(value =  "/", method = GET)
+    @RequestMapping(value =  "/hello", method = GET)
     public HelloWorld sayHelloWorld() {
         return helloWorldService.retrieveHelloWorld();
     }
