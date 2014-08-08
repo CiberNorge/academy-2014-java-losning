@@ -1,1 +1,1 @@
-web: java -jar -Dserver.port=$PORT build/libs/cibrary-*.jar
+web: java -jar -Dserver.port=$PORT $JAVA_OPTS build/libs/cibrary-*.jar
