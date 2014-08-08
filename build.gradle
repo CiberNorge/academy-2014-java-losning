@@ -20,8 +20,11 @@ apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin: 'spring-boot'
 
-sourceCompatibility = '1.7'
-targetCompatibility = '1.7'
+compileJava {
+    sourceCompatibility = '1.7'
+    targetCompatibility = '1.7'
+}
+
 group = 'no.ciber'
 version = '1.0.0-SNAPSHOT'
 jar.baseName = "cibrary"
@@ -45,10 +48,10 @@ dependencies {
     compile("org.hibernate:hibernate-validator")
 
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    //compile("com.h2database:h2")
-    compile('postgresql:postgresql:9.1-901-1.jdbc4')
     compile 'joda-time:joda-time'
+    compile('postgresql:postgresql:9.1-901-1.jdbc4')
     testCompile 'junit:junit'
+    testCompile("com.h2database:h2")
 
     [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 }
