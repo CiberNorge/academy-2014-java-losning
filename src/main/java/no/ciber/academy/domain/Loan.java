@@ -2,12 +2,11 @@ package no.ciber.academy.domain;
 
 import org.joda.time.LocalDateTime;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class Loan {
 
     @Id

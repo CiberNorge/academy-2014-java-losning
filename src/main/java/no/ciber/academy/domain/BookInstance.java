@@ -2,14 +2,13 @@ package no.ciber.academy.domain;
 
 import org.joda.time.LocalDate;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+//@Entity
 public class BookInstance {
 
     @Id
