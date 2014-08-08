@@ -24,6 +24,7 @@ sourceCompatibility = '1.7'
 targetCompatibility = '1.7'
 group = 'no.ciber'
 version = '1.0.0-SNAPSHOT'
+jar.baseName = "cibrary"
 
 repositories {
     mavenLocal()
