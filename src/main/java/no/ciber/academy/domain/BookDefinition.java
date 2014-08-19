@@ -2,6 +2,7 @@ package no.ciber.academy.domain;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 
@@ -18,6 +19,7 @@ public class BookDefinition {
 
     @NotBlank
     private String author;
+    @DateTimeFormat(pattern="dd.MM.yyyy")
     private LocalDate released;
     private String description;
 //    private BookCategory category;
@@ -27,6 +29,14 @@ public class BookDefinition {
 //   private List<BookInstance> instances = new ArrayList<>();
 
     public BookDefinition() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {

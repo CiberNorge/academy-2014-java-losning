@@ -1,14 +1,14 @@
 package no.ciber.academy.web.controller;
 
 import no.ciber.academy.domain.BookDefinition;
-import no.ciber.academy.service.BookService;
+import no.ciber.academy.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -17,22 +17,33 @@ import javax.validation.Valid;
 @RequestMapping("/books")
 public class BooksController {
 
-    @RequestMapping(params = "init", method = RequestMethod.GET)
+    @Autowired
+    private BookServiceImpl bookService;
+
+    @RequestMapping(value = "/init", method = RequestMethod.GET)
     public String createForm(@ModelAttribute BookDefinition bookDefinition) {
         return "books/addBook";
     }
 
-    @RequestMapping(value = "save", method = RequestMethod.POST)
-    public ModelAndView save(@Valid BookDefinition bookDefinition, BindingResult result,
-                               RedirectAttributes redirect) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(@Valid BookDefinition bookDefinition, BindingResult result,
+                               ModelMap model, RedirectAttributes redirect) {
         if (result.hasErrors()) {
-            return new ModelAndView("books/addBook", "formErrors", result.getAllErrors());
+            return "books/addBook";
         }
-        //message = this.messageRepository.save(message);
+
+        bookDefinition = bookService.save(bookDefinition);
+
         redirect.addFlashAttribute("globalMessage", String.format(
                 "Successfully created a new book with the title '%s'.",
                 bookDefinition.getTitle()));
-        return new ModelAndView("redirect:/", "message.id", 2);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/inventory", method = RequestMethod.GET)
+    public String findAll(ModelMap model) {
+        model.put("books", bookService.findAllBooks());
+        return "books/inventory";
     }
 
 }

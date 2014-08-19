@@ -3,6 +3,14 @@
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorator="layout">
 <head>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#cancelBtn").click(function() {
+                window.location.href = '/'
+            });
+            $('#released').datepicker()
+        });
+    </script>
 </head>
 <body>
 <span layout:fragment="sub-header">
@@ -11,26 +19,42 @@
 <div layout:fragment="content"
      class="container">
         <form id="bookForm"
-              th:action="@{/books/save(form)}" th:object="${bookDefinition}"
+              th:action="@{/books/save/(form)}" th:object="${bookDefinition}"
               action="#" method="post" role="form"
               class="form-horizontal">
 
             <div class="form-group">
+                <label for="isbn">ISBN</label>
+                <input type="text"
+                       th:field="*{isbn}"
+                       th:errorclass="field-error" class="form-control"/>
+                <p th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" class="error-text" />
+            </div>
+            <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text"
                        th:field="*{title}"
-                       th:errorclass="${#fields.hasErrors('title')} ? 'field-error'" class="form-control"/>
+                       th:errorclass="field-error" class="form-control"/>
                 <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-text" />
             </div>
             <div class="form-group">
                 <label for="author">Author</label>
                 <input type="text"
-                        th:field="*{author}"
-                        th:errorclass="${#fields.hasErrors('author')} ? 'field-error'" class="form-control"/>
-                <p th:if="${#fields.hasErrors('author')}" th:errors="*{author}  " class="error-text" />
+                       th:field="*{author}"
+                       th:errorclass="field-error" class="form-control"/>
+                <p th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="error-text" />
+            </div>
+            <div class="form-group">
+                <label for="released">Released</label>
+                <input  id="released"
+                        type="text"
+                       th:field="*{released}"
+                       th:errorclass="field-error" class="form-control"/>
+                <p th:if="${#fields.hasErrors('released')}" th:errors="*{released}" class="error-text" />
             </div>
             <div class="form-actions pull-right">
-                <input type="submit" class="btn btn-primary" value="Create"/>
+                <input id="cancelBtn" type="button" class="btn btn-warning" value="Cancel"/>
+                <input id="submitBtn" type="submit" class="btn btn-primary" value="Create"/>
             </div>
     </form>
 </div>

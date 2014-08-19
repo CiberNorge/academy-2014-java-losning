@@ -8,9 +8,11 @@
     <title>Cibrary</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/bootstrap-datepicker.js}" src="bootstrap-datepicker.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" th:href="@{/css/cibrary.css}" href="../../css/cibrary.css" />
+    <link rel="stylesheet" th:href="@{/css/datepicker.css}" href="../../css/datepicker.css" />
 
 </head>
 <body>
@@ -39,7 +41,7 @@
                             <span class="glyphicon glyphicon-book"></span> Books<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="form.html" th:href="@{/books/(init)}">Add</a></li>
+                            <li><a href="form.html" th:href="@{/books/init}">Add</a></li>
                             <li class="divider"></li>
                             <li><a href="#">More to come...</a></li>
                         </ul>

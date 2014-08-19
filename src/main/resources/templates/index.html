@@ -12,8 +12,17 @@
 <div layout:fragment="content"
      class="container">
     <div>
-        <span class="glyphicon glyphicon-plus"></span> <a href="form.html" th:href="@{/books/(init)}">Add a new
-        book</a>
+        <div class="row">
+            <div class="col-md-4">
+                <span class="glyphicon glyphicon-plus"></span> <a href="addBook.html" th:href="@{/books/init}">Add a new book</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <span class="glyphicon glyphicon-th"></span> <a href="inventory.html" th:href="@{/books/inventory}">View
+                inventory</a>
+            </div>
+        </div>
     </div>
 </div>
 </body>
