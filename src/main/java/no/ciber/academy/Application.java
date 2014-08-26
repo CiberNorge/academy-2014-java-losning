@@ -1,11 +1,11 @@
 package no.ciber.academy;
 
+import org.postgresql.jdbc2.optional.SimpleDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
 import javax.sql.DataSource;
 import java.net.URI;
@@ -28,9 +28,12 @@ public class Application {
         String password = dbUri.getUserInfo().split(":")[1];
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 
-        SingleConnectionDataSource basicDataSource = new SingleConnectionDataSource();
-        basicDataSource.setUrl(dbUrl);
-        basicDataSource.setUsername(username);
+
+        SimpleDataSource basicDataSource = new SimpleDataSource();
+        basicDataSource.setServerName(dbUri.getHost());
+        basicDataSource.setPortNumber(dbUri.getPort());
+        basicDataSource.setApplicationName(dbUri.getPath());
+        basicDataSource.setUser(username);
         basicDataSource.setPassword(password);
 
         return basicDataSource;
