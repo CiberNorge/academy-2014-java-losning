@@ -31,6 +31,7 @@ public class Application {
 
         SimpleDriverDataSource basicDataSource = new SimpleDriverDataSource();
         basicDataSource.setDriverClass(org.postgresql.Driver.class);
+        basicDataSource.setUsername(dbUrl);
         basicDataSource.setUsername(username);
         basicDataSource.setPassword(password);
         //SimpleDataSource basicDataSource = new SimpleDataSource();
