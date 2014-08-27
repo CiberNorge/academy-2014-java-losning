@@ -26,7 +26,7 @@ public class Application {
 
         String username = dbUri.getUserInfo().split(":")[0];
         String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 
 
         SimpleDriverDataSource basicDataSource = new SimpleDriverDataSource();
@@ -34,12 +34,6 @@ public class Application {
         basicDataSource.setUrl(dbUrl);
         basicDataSource.setUsername(username);
         basicDataSource.setPassword(password);
-        //SimpleDataSource basicDataSource = new SimpleDataSource();
-        //basicDataSource.setServerName(dbUri.getHost());
-        //basicDataSource.setPortNumber(dbUri.getPort());
-        //basicDataSource.setApplicationName(dbUri.getPath());
-        //basicDataSource.setUser(username);
-        //basicDataSource.setPassword(password);
 
         return basicDataSource;
     }
