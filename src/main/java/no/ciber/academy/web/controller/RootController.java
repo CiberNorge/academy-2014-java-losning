@@ -2,6 +2,7 @@ package no.ciber.academy.web.controller;
 
 import no.ciber.academy.domain.BaseEntity;
 import no.ciber.academy.repository.BaseEntityRepository;
+import no.ciber.academy.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ public class RootController {
     @Autowired
     private BaseEntityRepository baseEntityRepository;
 
+    @Autowired
+    private SearchService searchService;
+
     @RequestMapping("/")
     public String index(Model model) {
         List<BaseEntity> all = baseEntityRepository.findAll();
@@ -28,8 +32,17 @@ public class RootController {
     public String add(@RequestParam String text, Model model) {
         BaseEntity baseEntity = baseEntityRepository.save(new BaseEntity(text));
         model.addAttribute("entity", baseEntity);
-        return "added";
+        return "redirect:/";
     }
+
+    @RequestMapping("/search")
+    public String search(@RequestParam String text, Model model) {
+        List<BaseEntity> result = searchService.search(text);
+        model.addAttribute("entities", result);
+        return "index";
+    }
+
+
 
 
 }

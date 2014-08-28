@@ -1,17 +1,22 @@
 package no.ciber.academy.domain;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Indexed
 public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Field
     private String text;
 
     public BaseEntity() { }
